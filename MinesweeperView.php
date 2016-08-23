@@ -1,5 +1,5 @@
 <?php
-require_once("Minesweeper_1.php");
+require_once("Minesweeper_1forView.php");
 ?>
 <html>
     <head>
@@ -12,12 +12,13 @@ require_once("Minesweeper_1.php");
     </head>
     <body>
         <div id="wrapper" class="">
-            <?php for($i = 0; $i <= 9; $i++) : ?>
+            <?php for($i = 0; $i <= $col - 1; $i++) : ?>
             <div class="cf">
-                <?php for($j = 0; $j <= 9; $j++) :?>
-                <div class="float-l relative">
-                    <span><?php echo $frame[$i][$j];?></span>
-                    <input type="button" class="disappear" onclick="disappear()"></input>
+                <?php for($j = 0; $j <= $row - 1; $j++) :?>
+                <div class="float-l relative" id="<?php echo $frame[$i][$j];?>">
+                    <span style="display:none;" id="<?php echo $i;?>"><?php echo $j;?>
+                    </span><span><?php echo $frame[$i][$j];?>
+                    </span><input type="button" class="disappear" onclick="disappear()"></input>
                 </div>
                 <?php endfor ?>
             </div>
@@ -28,6 +29,16 @@ require_once("Minesweeper_1.php");
     <script>
         function disappear(){
             event.srcElement.className = "disappearChange";
+            // event.srcElement.className = "red";
+            if(event.srcElement.parentNode.id == 'M'){
+                alert('boom!!!!!');
+            };
+            if(event.srcElement.parentNode.id == '0'){
+                //右
+                // event.srcElement.parentNode.nextSibling.children[1].className = "disappearChange";
+                posX = event.srcElement.previousSibling.previousSibling.id;
+                posY = event.srcElement.previousSibling.previousSibling.innerHTML;
+            };
         }
 
 
