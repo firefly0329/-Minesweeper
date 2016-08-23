@@ -1,7 +1,7 @@
 <?php
-$col = 10;
-$row = 10;
-$landmine = 10;
+$col = 20;
+$row = 20;
+$landmine = 40;
 $area = $col * $row;
 $time1 = microtime(true);
 //=============產生100數列==============

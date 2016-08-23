@@ -1,34 +1,20 @@
 <?php
 $map = $_GET['map'];
-// echo $map;
-// echo "<br><br>";
-// echo gettype($map);
-// echo "<br><br>";
 $result = checkRule($map);
 if($result == "OK"){
     $result = checkNumber($map);
 }
-echo $result;
-
-
-
-function regular($map){
-    //驗證輸入
-    if(preg_match("/M*/", $map)){
-        $message = "123";
-        return $message;
-    }
-}
+echo $message;
 
 function checkRule($map){
-    //驗證是否為字串
-    if(!is_string($map)){
-        $message = "請輸入字串";
-        return $message;
-    }
     //驗證字串長度
     if(strlen($map) != 109){
         $message = "map長度不符,您的字串長度為" . strlen($map) ;
+        return $message;
+    }
+    //驗證字符格式
+    if(!preg_match("/^[0-8|M|N]$/", $map)){
+        $message = "出現0~8,M,N以外的字符";
         return $message;
     }
     //驗證炸彈數
@@ -36,7 +22,7 @@ function checkRule($map){
         $message = "炸彈數不符,您的炸彈數為" . substr_count($map, "M") . "個";
         return $message;
     }
-    //驗證換行
+    //驗證換行位置
     for($i = 1; $i <= 9; $i++){
         $checkN .= substr($map, 10, 1);
     }
@@ -76,7 +62,7 @@ function checkNumber($map){
         }
     }
     if($checkOK == 100){
-        return "驗證成功";
+        return "符合";
     }else{
         return "數字驗證錯誤";
     }

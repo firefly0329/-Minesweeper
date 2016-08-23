@@ -1,18 +1,18 @@
 
 #wrapper div div{
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     font-size: 15px;
     text-align: center;
-    line-height: 20px;
+    line-height: 30px;
 }
 #wrapper div div input{
     background-color: gray;
     position: absolute;
     top: 0;
     left: 0;
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     /*opacity: 0.8;*/
 }
 .disappear{
